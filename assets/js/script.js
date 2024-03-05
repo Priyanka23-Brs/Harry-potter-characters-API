@@ -1,10 +1,4 @@
-/**
-Author:    Build Rise Shine with Nyros (BRS)
-Created:   11.05.2022
-Library / Component: Script file
-Description: Logic behind the app(fetching the data from the API)
-(c) Copyright by BRS with Nyros.
-**/
+  
 const charactersList = document.getElementById('charactersList');
 const searchBar = document.getElementById('searchBar');
 let hpCharacters = [];
@@ -37,6 +31,9 @@ const loadCharacters = async() => {
 };
 
 const displayCharacters = (characters) => {
+    if(characters.length==0){
+        charactersList.innerHTML=`<p class="found"> Not found </p>`;
+    }else{
     const htmlString = characters
         .map((character) => {
             return `
@@ -53,6 +50,7 @@ const displayCharacters = (characters) => {
         })
         .join('');
     charactersList.innerHTML = htmlString;
+    }
 };
 
 function setTheme(theme) {
